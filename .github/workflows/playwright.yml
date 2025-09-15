@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.55.0-noble
+      options: --user root
+    env:
+      HOME: /root
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
