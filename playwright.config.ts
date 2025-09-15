@@ -80,7 +80,7 @@ const config: PlaywrightTestConfig = {
 };
 
 /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-if (process.env.CI) {
+if (!process.env.CI) {
   config.reporter = [['html', { open: 'never' }], ['line']];
 } else {
   config.reporter = [
