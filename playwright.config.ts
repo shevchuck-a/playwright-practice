@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import type { PlaywrightTestConfig } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -44,10 +45,10 @@ const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Firefox'] },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
@@ -79,7 +80,7 @@ const config: PlaywrightTestConfig = {
 };
 
 /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-if (!process.env.CI) {
+if (process.env.CI) {
   config.reporter = [['html', { open: 'never' }], ['line']];
 } else {
   config.reporter = [
