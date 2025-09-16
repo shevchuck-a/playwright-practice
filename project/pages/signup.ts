@@ -13,21 +13,14 @@ export class SignupPage {
   }
   
   public async fillSignupFormAndSubmit(name: string, email: string) {
-    // const form = await this.page.locator('.signup-form');
-    // await form.getByRole('textbox', { name: 'name' }).fill(name);
-    // await form.getByRole('textbox', { name: 'Email Address' }).fill(email);
-    // await form.getByRole('button', { name: 'Signup' }).click();
     await this.page.getByTestId('signup-name').fill(name);
     await this.page.getByTestId('signup-email').fill(email);
     await this.page.getByTestId('signup-button').click();
   }
 
-  public async fillAccountInfoAndSubmit(accountInfo: AccountInfo) {
+  public async fillAccountInfoAndSubmit(accountInfo: AccountInfo, markForDeletion = true) {
     const title = accountInfo.title;
-    // await this.page.getByLabel(title).check();
-    // await this.page.getByRole('radio', { name: title }).check();
     await this.page.locator(title).check();
-    // await this.page.getByRole('textbox', { name: 'name' }).fill(accountInfo.username);
     await this.page.getByTestId('password').fill(accountInfo.password);
     await this.page.getByTestId('days').selectOption(accountInfo.dayOfBirth.toString());
     await this.page.getByTestId('months').selectOption(accountInfo.monthOfBirth);
@@ -49,5 +42,9 @@ export class SignupPage {
     await this.page.getByTestId('zipcode').fill(accountInfo.zipcode);
     await this.page.getByTestId('mobile_number').fill(accountInfo.mobileNumber);
     await this.page.getByRole('button', { name: 'Create Account' }).click();
+
+    if (markForDeletion){
+      global.registeredUsersForCleanup.push(accountInfo);
+    }
   }
 }

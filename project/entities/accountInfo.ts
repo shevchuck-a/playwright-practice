@@ -1,7 +1,7 @@
 import { AccountTitle } from "@entities/accountTitle";
 
 export type AccountInfo = {
-    title: AccountTitle,
+    title: AccountTitle | string,
     username: string,
     email: string,
     password: string,

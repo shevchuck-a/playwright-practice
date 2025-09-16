@@ -6,7 +6,9 @@
     "outDir": "./dist",
     "rootDir": "./",
     "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -17,13 +19,19 @@
       "@pages/*": ["project/pages/*"],
       "@fixtures/*": ["ui-tests/fixtures/*"],
       "@entities/*": ["project/entities/*"],
-      "@elements/*": ["project/elements/*"]
+      "@elements/*": ["project/elements/*"],
+      "@api/*": ["project/api/*"],
+      "@helpers/*": ["helpers/*"]
     },
     "types": ["node", "@playwright/test"]
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   },
   "include": [
     "ui-tests/**/*",
     "project/**/*",
+    "helpers/**/*",
     "playwright.config.ts"
   ],
   "exclude": [

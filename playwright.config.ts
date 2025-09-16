@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import type { PlaywrightTestConfig } from '@playwright/test';
+import dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
@@ -8,6 +9,8 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ quiet: true });
+global.registeredUsersForCleanup = [];
 
 /**
  * See https://playwright.dev/docs/test-configuration.
