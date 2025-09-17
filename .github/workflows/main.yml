@@ -8,4 +8,5 @@ jobs:
     uses: ./.github/workflows/playwright.yml
 
   k6-tests:
+    needs: playwright-tests
     uses: ./.github/workflows/k6.yml
