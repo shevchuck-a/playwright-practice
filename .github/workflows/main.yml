@@ -1,0 +1,11 @@
+name: Main Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  playwright-tests:
+    uses: ./.github/workflows/playwright.yml
+
+  k6-tests:
+    uses: ./.github/workflows/k6.yml
