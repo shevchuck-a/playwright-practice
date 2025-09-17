@@ -1,4 +1,4 @@
-import { test as base } from '@fixtures/baseFixture';
+import { test as base } from '@ui-fixtures/baseFixture';
 import { LoginPage } from '@pages/login';
 import { AccountAPI } from '@api/account'
 

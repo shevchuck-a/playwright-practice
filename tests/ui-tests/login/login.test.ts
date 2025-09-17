@@ -48,7 +48,7 @@ test.describe('Login tests', () => {
       });
 
       await test.step('Login with created user', async () => {
-        await loginPage.login(userData.email, userData.password);
+        await loginPage.login(userData.email!, userData.password!);
         await expect(homePage.page).toHaveTitle(/Automation Exercise/);
       });
     });
