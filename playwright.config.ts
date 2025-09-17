@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 dotenv.config({ quiet: true });
-global.registeredUsersForCleanup = [];
+globalThis.registeredUsersForCleanup = [];
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -41,11 +41,18 @@ const config: PlaywrightTestConfig = {
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      teardown: 'ui-teardown',
     },
 
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      teardown: 'ui-teardown',
+    },
+
+    {
+      name: 'ui-teardown',
+      testMatch: 'ui-teardown.ts',
     },
 
     // {

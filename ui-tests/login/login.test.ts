@@ -30,7 +30,7 @@ test.describe('Login tests', () => {
     ]
 
   for (const userData of newUserData) {
-    test.beforeAll(async ({ accountAPI }) => {
+    test.beforeEach(async ({ accountAPI }) => {
       const response = await accountAPI.create(userData);
       const responseBody = await response.json();
       expect(responseBody.responseCode).toBe(201);
