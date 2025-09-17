@@ -1,6 +1,5 @@
 import { test as base } from '@playwright/test';
 import { HomePage } from '@pages/home';
-import '../../../globalVars';
 
 type BaseFixture = {
   homePage: HomePage;

@@ -8,16 +8,16 @@ test.describe('Login tests', () => {
   const newUserData: AccountInfo[] = [
       {
         title: AccountTitle.MR,
-        username: `testuser-${randomUUID()}`,
+        name: `testuser-${randomUUID()}`,
         email: `${randomUUID()}@example.com`,
         password: 'Password123!',
-        dayOfBirth: 1,
-        monthOfBirth: 'January',
-        yearOfBirth: 2000,
+        birth_date: 1,
+        birth_month: 'January',
+        birth_year: 2000,
         newsletter: true,
         specialOffers: false,
-        firstName: 'John',
-        lastName: 'Doe',
+        firstname: 'John',
+        lastname: 'Doe',
         company: 'ExampleCorp',
         address1: '123 Main St',
         address2: 'Apt 4B',
@@ -25,7 +25,7 @@ test.describe('Login tests', () => {
         state: 'Ontario',
         city: 'Toronto',
         zipcode: 'M4B1B3',
-        mobileNumber: '+1234567890'
+        mobile_number: '+1234567890'
       }
     ]
 

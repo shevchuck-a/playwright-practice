@@ -2,16 +2,16 @@ import { AccountTitle } from "@entities/accountTitle";
 
 export type AccountInfo = {
     title?: AccountTitle | string,
-    username?: string,
+    name?: string,
     email?: string,
     password?: string,
-    dayOfBirth?: number,
-    monthOfBirth?: string,
-    yearOfBirth?: number,
+    birth_date?: number | string,
+    birth_month?: string,
+    birth_year?: number | string,
     newsletter?: boolean,
     specialOffers?: boolean,
-    firstName?: string,
-    lastName?: string,
+    firstname?: string,
+    lastname?: string,
     company?: string,
     address1?: string,
     address2?: string,
@@ -19,5 +19,5 @@ export type AccountInfo = {
     state?: string,
     city?: string,
     zipcode?: string,
-    mobileNumber?: string
+    mobile_number?: string
 }

@@ -17,7 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@pages/*": ["project/pages/*"],
-      "@ui-fixtures/*": ["tests/ui-tests/fixtures/*"],
+      "@ui-fixtures/*": ["tests-ui/fixtures/*"],
       "@entities/*": ["project/entities/*"],
       "@elements/*": ["project/elements/*"],
       "@api/*": ["project/api/*"],
@@ -29,7 +29,8 @@
     "require": ["tsconfig-paths/register"]
   },
   "include": [
-    "tests/ui-tests/**/*",
+    "tests-ui/**/*",
+    "tests-api/**/*",
     "project/**/*",
     "helpers/**/*",
     "playwright.config.ts"

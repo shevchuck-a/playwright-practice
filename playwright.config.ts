@@ -16,7 +16,7 @@ globalThis.registeredUsersForCleanup = [];
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  testDir: './tests-ui',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -53,6 +53,11 @@ const config: PlaywrightTestConfig = {
     {
       name: 'ui-teardown',
       testMatch: 'ui-teardown.ts',
+    },
+
+    {
+      name: 'api-tests',
+      testDir: 'tests-api',
     },
 
     // {
