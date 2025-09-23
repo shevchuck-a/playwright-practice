@@ -1,8 +1,8 @@
 import { test as base } from '@ui-fixtures/baseFixture';
-import { LoginPage } from '@pages/login';
-import { SignupPage } from '@pages/signup';
-import { AccountCreatedPage } from '@pages/accountCreated';
-import { AccountDeletedPage } from '@pages/accountDeleted';
+import { LoginPage } from '@pages/login/LoginPage';
+import { SignupPage } from '@pages/singnup/SignupPage';
+import { AccountCreatedPage } from '@pages/accountCreated/AccountCreatedPage';
+import { AccountDeletedPage } from '@pages/accountDeleted/AccountDeletedPage';
 
 type RegistrationFixture = {
   loginPage: LoginPage;

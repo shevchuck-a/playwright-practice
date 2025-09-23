@@ -1,0 +1,32 @@
+import { BasePage } from "@pages/BasePage";
+import { Page } from "@playwright/test";
+
+export class LoginLocators extends BasePage {
+  constructor(page: Page) {
+    super(page);
+  }
+
+  public get loginEmail() {
+    return this.page.getByTestId('login-email');
+  }
+
+  public get loginPassword() {
+    return this.page.getByTestId('login-password');
+  }
+
+  public get loginButton() {
+    return this.page.getByTestId('login-button');
+  }
+
+  public get signupName() {
+    return this.page.getByTestId('signup-name');
+  }
+
+  public get signupEmail() {
+    return this.page.getByTestId('signup-email');
+  }
+
+  public get signupButton() {
+    return this.page.getByTestId('signup-button');
+  }
+}

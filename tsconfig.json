@@ -16,12 +16,14 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@pages/*": ["project/pages/*"],
+      "@pages/*": ["project/ui/pages/*"],
       "@ui-fixtures/*": ["tests-ui/fixtures/*"],
       "@entities/*": ["project/entities/*"],
-      "@elements/*": ["project/elements/*"],
+      "@components/*": ["project/ui/components/*"],
+      "@elements/*": ["project/ui/elements/*"],
       "@api/*": ["project/api/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@core-ui/*": ["framework/core-ui/*"]
     },
     "types": ["node", "@playwright/test"]
   },
@@ -32,7 +34,7 @@
     "tests-ui/**/*",
     "tests-api/**/*",
     "project/**/*",
-    "helpers/**/*",
+    "framework/**/*",
     "playwright.config.ts"
   ],
   "exclude": [
