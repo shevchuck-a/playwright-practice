@@ -33,6 +33,7 @@
   "include": [
     "tests-ui/**/*",
     "tests-api/**/*",
+    "tests-performance/**/*",
     "project/**/*",
     "framework/**/*",
     "playwright.config.ts"

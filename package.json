@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .ts,.js",
-    "lint:fix": "eslint . --ext .ts,.js --fix",
-    "lint:check": "eslint . --ext .ts,.js --max-warnings 0"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "eslint . --max-warnings 0"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "eslint": "^9.35.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-playwright": "^2.2.2",
     "globals": "^16.4.0",
     "jiti": "^2.5.1",
