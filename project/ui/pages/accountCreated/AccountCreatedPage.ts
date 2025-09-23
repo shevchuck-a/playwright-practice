@@ -3,7 +3,7 @@ import { AccountCreatedLocators } from "./AccountCreatedLocators";
 
 export class AccountCreatedPage extends AccountCreatedLocators {
   constructor(page: Page) {
-    super(page);
+    super(page, '/account_created');
   }
 
   public async ClickContinue() {

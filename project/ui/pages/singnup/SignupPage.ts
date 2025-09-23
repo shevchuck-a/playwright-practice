@@ -1,17 +1,12 @@
 import { Page } from "@playwright/test";
 import { AccountInfo } from "@entities/accountInfo";
 import { SignupLocators } from "./SignupLocators";
-import { FormsHelper } from "@core-ui/helpers/FormsHelper";
-import { FieldConfig } from "@core-ui/interfaces/FieldConfig";
+import { FormsHelper } from "@helpers-ui/FormsHelper";
+import { FieldConfig } from "@interfaces-ui/FieldConfig";
 
 export class SignupPage extends SignupLocators {
   constructor(page: Page) {
-    super(page);
-  }
-
-  public async navigate() {
-    await this.page.goto('/signup');
-    return this;
+    super(page, '/signup');
   }
 
   public async fillAccountInfoAndSubmit(accountInfo: AccountInfo, markForDeletion = true) {

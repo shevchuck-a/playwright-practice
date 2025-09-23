@@ -3,11 +3,7 @@ import { LoginLocators } from "./LoginLocators";
 
 export class LoginPage extends LoginLocators {
   constructor(page: Page) {
-    super(page);
-  }
-
-  public async navigate() {
-    await this.page.goto('/login');
+    super(page, '/login');
   }
 
   public async fillSignupFormAndSubmit(name: string, email: string) {

@@ -3,7 +3,7 @@ import { AccountDeletedLocators } from "./accountDeletedLocators";
 
 export class AccountDeletedPage extends AccountDeletedLocators {
   constructor(page: Page) {
-    super(page);
+    super(page, '/delete_account');
   }
 
   public async ClickContinue() {

@@ -3,8 +3,8 @@ import { Page } from "@playwright/test";
 import { Button } from "@elements/buttonEnum";
 
 export class AccountDeletedLocators extends BasePage {
-  constructor(page: Page) {
-    super(page);
+  constructor(page: Page, path: string) {
+    super(page, path);
   }
 
   public get continueButton() {

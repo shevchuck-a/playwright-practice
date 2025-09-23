@@ -22,8 +22,8 @@
       "@components/*": ["project/ui/components/*"],
       "@elements/*": ["project/ui/elements/*"],
       "@api/*": ["project/api/*"],
-      "@helpers/*": ["helpers/*"],
-      "@core-ui/*": ["framework/core-ui/*"]
+      "@helpers-ui/*": ["project/ui/helpers/*"],
+      "@interfaces-ui/*": ["project/ui/interfaces/*"],
     },
     "types": ["node", "@playwright/test"]
   },

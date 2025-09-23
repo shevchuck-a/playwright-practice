@@ -1,5 +1,5 @@
 import { Locator } from "@playwright/test";
-import { FieldConfig } from "@core-ui/interfaces/FieldConfig";
+import { FieldConfig } from "@interfaces-ui/FieldConfig";
 
 export class FormsHelper {
   public static async fillTheForm<T extends Record<string, FieldConfig>>(formConfig: T): Promise<void> {

@@ -40,34 +40,33 @@ test.describe('Registration cases', () =>{
     }) =>{
       await test.step('Navigate to Signup Page', async () => {
         await homePage.navigate();
-        // await expect(homePage).toHaveTitle(/Automation Exercise/);
+        expect(await homePage.getTitle()).toBe("Automation Exercise");
 
         await homePage.header.signupLoginClick();
-        // await expect(loginPage.page.getByText('New User Signup!')).toBeVisible();
       });
 
       await test.step('Fill Signup Form', async () =>{
         await loginPage.fillSignupFormAndSubmit(userData.name!, userData.email!);
-        // await expect(signupPage.page.getByText('ENTER ACCOUNT INFORMATION')).toBeVisible();
+        expect(await signupPage.getTitle()).toBe("Automation Exercise - Signup");
       });
 
       await test.step('Fill Account Information', async () =>{
         userData.email = undefined; // Clear email to avoid re-filling
         await signupPage.fillAccountInfoAndSubmit(userData);
-        // await expect(signupPage.page.getByText('ACCOUNT CREATED!')).toBeVisible();
+        expect(await signupPage.getTitle()).toBe("Automation Exercise - Account Created");
       });
 
       await test.step('Click Continue for registered user', async () =>{
         await accountCreatedPage.ClickContinue();
-        // await expect(homePage.page).toHaveTitle(/Automation Exercise/);
+        expect(await homePage.getTitle()).toBe("Automation Exercise");
       });
 
       await test.step('Delete created user', async () =>{
         await homePage.header.deleteAccountClick();
-        // await expect(accountDeletedPage.page.getByText('ACCOUNT DELETED!')).toBeVisible();
+        expect(await accountDeletedPage.getTitle()).toBe("Automation Exercise - Account Created");
         
         await accountDeletedPage.ClickContinue();
-        // await expect(homePage.page).toHaveTitle(/Automation Exercise/);
+        expect(await homePage.getTitle()).toBe("Automation Exercise");
       });
     });
   }

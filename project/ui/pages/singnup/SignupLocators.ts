@@ -2,8 +2,8 @@ import { BasePage } from "@pages/BasePage";
 import { Page } from "@playwright/test";
 
 export class SignupLocators extends BasePage {
-  constructor(page: Page) {
-    super(page);
+  constructor(page: Page, path: string) {
+    super(page, path);
   }
 
   public titleRadio(title: string) {
