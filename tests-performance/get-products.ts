@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+ 
 import http from "k6/http";
 import { Trend } from "k6/metrics";
 import { group, check } from "k6";
@@ -69,10 +69,6 @@ export default function () {
     check(response, {
       'is status 200': (r) => r.status === 200,
     });
-
-    if (DEBUG) {
-      console.log(`Response time for ${file.Extension}: ${response.timings.duration} ms`);
-    }
 
     get_products_trend.add(response.timings.duration);
   });

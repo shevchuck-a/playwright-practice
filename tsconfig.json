@@ -25,7 +25,7 @@
       "@helpers-ui/*": ["project/ui/helpers/*"],
       "@interfaces-ui/*": ["project/ui/interfaces/*"],
     },
-    "types": ["node", "@playwright/test"]
+    "types": ["node", "@playwright/test", "k6"]
   },
   "ts-node": {
     "require": ["tsconfig-paths/register"]
