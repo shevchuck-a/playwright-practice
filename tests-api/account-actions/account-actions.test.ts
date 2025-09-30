@@ -58,7 +58,7 @@ test.describe('API tests for account actions', () => {
       });
 
       await test.step('Get user via API', async () => {
-        const response = await accountAPI.get(userData.initialUser.email!);
+        const response = await accountAPI.get(userData.initialUser.email);
         expect(response.status()).toBe(200);
         const responseBody = await response.json();
         expect(responseBody.responseCode, responseBody).toBe(200);
@@ -89,7 +89,7 @@ test.describe('API tests for account actions', () => {
       });
 
       await test.step('Get updated user via API', async () => {
-        const response = await accountAPI.get(userData.updatedUser.email!);
+        const response = await accountAPI.get(userData.updatedUser.email);
         expect(response.status()).toBe(200);
         const responseBody = await response.json();
         expect(responseBody.responseCode).toBe(200);
@@ -111,7 +111,7 @@ test.describe('API tests for account actions', () => {
       });
 
       await test.step('Delete user via API', async () => {
-        const response = await accountAPI.delete(userData.updatedUser.email!, userData.updatedUser.password!);
+        const response = await accountAPI.delete(userData.updatedUser.email, userData.updatedUser.password);
         expect(response.status()).toBe(200);
         const responseBody = await response.json();
         expect(responseBody.responseCode).toBe(200);
@@ -119,7 +119,7 @@ test.describe('API tests for account actions', () => {
       });
 
       await test.step('Get deleted user via API', async () => {
-        const response = await accountAPI.get(userData.updatedUser.email!);
+        const response = await accountAPI.get(userData.updatedUser.email);
         expect(response.status()).toBe(200);
         const responseBody = await response.json();
         expect(responseBody.responseCode).toBe(404);

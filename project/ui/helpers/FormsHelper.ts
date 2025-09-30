@@ -1,11 +1,11 @@
 import { Locator } from "@playwright/test";
-import { FieldConfig } from "@interfaces-ui/FieldConfig";
+import { IFieldConfig } from "@interfaces-ui/IFieldConfig";
 
 export class FormsHelper {
-  public static async fillTheForm<T extends Record<string, FieldConfig>>(formConfig: T): Promise<void> {
+  public static async fillTheForm<T extends Record<string, IFieldConfig>>(formConfig: T): Promise<void> {
     for (const [, config] of Object.entries(formConfig)) {
-      if (this.shouldProcessField(config.value)) {
-        await this.executeAction(config.locator, config.action, config.value!);
+      if (config.value && this.shouldProcessField(config.value)) {
+        await this.executeAction(config.locator, config.action, config.value);
       }
     }
   }

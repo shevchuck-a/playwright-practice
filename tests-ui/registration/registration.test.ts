@@ -36,13 +36,20 @@ test.describe('Registration cases', () =>{
       loginPage,
       signupPage,
       accountCreatedPage,
-      accountDeletedPage
+      accountDeletedPage,
+      accountAPI
     }) =>{
+      const createdUserEmail = userData.email;
+
       await test.step('Navigate to Signup Page', async () => {
         await homePage.navigate();
         expect(await homePage.getTitle()).toBe("Automation Exercise");
+      });
 
+      await test.step('Click Signup/Login button', async () => {
         await homePage.header.signupLoginClick();
+        expect(await loginPage.getTitle()).toBe("Automation Exercise - Signup / Login");
+        await expect(loginPage.signupFormHeader).toBeVisible();
       });
 
       await test.step('Fill Signup Form', async () =>{
@@ -57,15 +64,24 @@ test.describe('Registration cases', () =>{
       });
 
       await test.step('Click Continue for registered user', async () =>{
-        await accountCreatedPage.ClickContinue();
+        await accountCreatedPage.clickContinue();
         expect(await homePage.getTitle()).toBe("Automation Exercise");
+      });
+
+      await test.step('Check via API that user created', async() =>{
+        await expect(async () => {
+          const response = await accountAPI.get(createdUserEmail!);
+          expect(response.status()).toBe(200);
+          const responseBody = await response.json();
+          expect(responseBody.responseCode).toBe(200);
+        }).toPass();
       });
 
       await test.step('Delete created user', async () =>{
         await homePage.header.deleteAccountClick();
         expect(await accountDeletedPage.getTitle()).toBe("Automation Exercise - Account Created");
         
-        await accountDeletedPage.ClickContinue();
+        await accountDeletedPage.clickContinue();
         expect(await homePage.getTitle()).toBe("Automation Exercise");
       });
     });

@@ -39,17 +39,18 @@ test.describe('Login tests', () => {
     test('Login with created user', async ({ homePage, loginPage }) => {
       await test.step('Navigate to Login Page', async () => {
         await homePage.navigate();
-        await expect(homePage.page).toHaveTitle(/Automation Exercise/);
+        expect(await homePage.getTitle()).toBe("Automation Exercise");
       });
 
       await test.step('Click Signup/Login button', async () => {
         await homePage.header.signupLoginClick();
-        await expect(loginPage.page.getByText('Login to your account')).toBeVisible();
+        expect(await loginPage.getTitle()).toBe("Automation Exercise - Signup / Login");
+        await expect(loginPage.loginFormHeader).toBeVisible();
       });
 
       await test.step('Login with created user', async () => {
-        await loginPage.login(userData.email!, userData.password!);
-        await expect(homePage.page).toHaveTitle(/Automation Exercise/);
+        await loginPage.fillLoginFormAndSubmit(userData.email!, userData.password!);
+        expect(await homePage.getTitle()).toBe("Automation Exercise");
       });
     });
   }

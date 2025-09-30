@@ -1,4 +1,3 @@
- 
 import http from "k6/http";
 import { Trend } from "k6/metrics";
 import { group, check } from "k6";

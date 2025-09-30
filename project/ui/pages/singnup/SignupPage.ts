@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 import { AccountInfo } from "@entities/accountInfo";
 import { SignupLocators } from "./SignupLocators";
 import { FormsHelper } from "@helpers-ui/FormsHelper";
-import { FieldConfig } from "@interfaces-ui/FieldConfig";
+import { IFieldConfig } from "@interfaces-ui/IFieldConfig";
 
 export class SignupPage extends SignupLocators {
   constructor(page: Page) {
@@ -20,7 +20,7 @@ export class SignupPage extends SignupLocators {
   }
   
   private getFieldConfigs(accountInfo: AccountInfo) {
-    const fieldConfigs: Record<keyof AccountInfo, FieldConfig> = {
+    const fieldConfigs: Record<keyof AccountInfo, IFieldConfig> = {
       title: { 
         locator: this.titleRadio(accountInfo.title?.toString() || ''), 
         action: 'check',

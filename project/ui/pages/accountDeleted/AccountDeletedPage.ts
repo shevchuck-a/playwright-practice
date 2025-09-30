@@ -6,7 +6,7 @@ export class AccountDeletedPage extends AccountDeletedLocators {
     super(page, '/delete_account');
   }
 
-  public async ClickContinue() {
+  public async clickContinue() {
     await this.continueButton.click();
   }
 }

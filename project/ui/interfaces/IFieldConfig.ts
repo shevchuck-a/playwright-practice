@@ -1,6 +1,6 @@
 import { Locator } from "@playwright/test";
 
-export interface FieldConfig {
+export interface IFieldConfig {
   locator: Locator;
   action: 'fill' | 'selectOption' | 'check';
   value?: string;

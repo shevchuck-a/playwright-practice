@@ -3,12 +3,14 @@ import { LoginPage } from '@pages/login/LoginPage';
 import { SignupPage } from '@pages/singnup/SignupPage';
 import { AccountCreatedPage } from '@pages/accountCreated/AccountCreatedPage';
 import { AccountDeletedPage } from '@pages/accountDeleted/AccountDeletedPage';
+import { AccountAPI } from '@api/account'
 
 type RegistrationFixture = {
   loginPage: LoginPage;
   signupPage: SignupPage;
   accountCreatedPage: AccountCreatedPage;
   accountDeletedPage: AccountDeletedPage;
+  accountAPI: AccountAPI;
 };
 
 export const test = base.extend<RegistrationFixture>({
@@ -24,5 +26,8 @@ export const test = base.extend<RegistrationFixture>({
   },
   accountDeletedPage: async ({ page }, use) => {
     await use(new AccountDeletedPage(page));
+  },
+  accountAPI: async ({ page }, use) => {
+    await use(new AccountAPI(page.request));
   },
 });

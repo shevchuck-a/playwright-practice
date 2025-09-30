@@ -6,7 +6,7 @@ export class AccountCreatedPage extends AccountCreatedLocators {
     super(page, '/account_created');
   }
 
-  public async ClickContinue() {
+  public async clickContinue() {
     await this.continueButton.click();
   }
 }

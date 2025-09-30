@@ -6,10 +6,6 @@ export class SignupLocators extends BasePage {
     super(page, path);
   }
 
-  public titleRadio(title: string) {
-    return this.page.locator(title);
-  }
-
   public get nameInput() {
     return this.page.getByTestId('name');
   }
@@ -84,5 +80,9 @@ export class SignupLocators extends BasePage {
 
   public get createAccountButton() {
     return this.page.getByRole('button', { name: 'Create Account' });
+  }
+
+  public titleRadio(title: string) {
+    return this.page.locator(title);
   }
 }

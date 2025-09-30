@@ -29,4 +29,12 @@ export class LoginLocators extends BasePage {
   public get signupButton() {
     return this.page.getByTestId('signup-button');
   }
+
+  public get loginFormHeader() {
+    return this.page.getByText('Login to your account');
+  }
+
+  public get signupFormHeader() {
+    return this.page.getByText('New User Signup!');
+  }
 }
