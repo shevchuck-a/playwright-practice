@@ -2,11 +2,11 @@ import { Page } from "@playwright/test";
 import { HeaderComponent } from "@components/header/HeaderComponent";
 import { FooterComponent } from "@components/footer/FooterComponent";
 
-export class BasePage {
+export abstract class BasePage {
   private path: string;
   protected page: Page;
-  header: HeaderComponent;
-  footer: FooterComponent;
+  public header: HeaderComponent;
+  public footer: FooterComponent;
 
   constructor(page: Page, path: string) {
     this.path = path;
