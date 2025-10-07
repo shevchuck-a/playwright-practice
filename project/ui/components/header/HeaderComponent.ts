@@ -10,6 +10,10 @@ export class HeaderComponent extends HeaderLocators{
     await this.signupLoginLink.click();
   }
 
+  public async logoutClick() {
+    await this.logoutLink.click();
+  }
+
   public async deleteAccountClick() {
     await this.deleteAccountLink.click();
   }

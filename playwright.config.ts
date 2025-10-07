@@ -40,13 +40,25 @@ const config: PlaywrightTestConfig = {
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-      teardown: 'ui-teardown',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: './playwright/.auth/user.json',
+      },
+      dependencies: ['ui-setup'],
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        storageState: './playwright/.auth/user.json',
+      },
+      dependencies: ['ui-setup'],
+    },
+
+    {
+      name: 'ui-setup',
+      testMatch: 'ui-setup.ts',
       teardown: 'ui-teardown',
     },
 

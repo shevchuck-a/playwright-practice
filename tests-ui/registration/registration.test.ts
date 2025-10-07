@@ -5,6 +5,7 @@ import { AccountTitle } from "@entities/accountTitle";
 import { AccountInfo } from '@entities/AccountInfo';
 import { ApiResponseBody } from '@api/types/ApiResponseBody';
 
+test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Registration cases', () =>{
   const registerUsersData: AccountInfo[] = [
@@ -42,7 +43,7 @@ test.describe('Registration cases', () =>{
     }) =>{
       const createdUserEmail = userData.email;
 
-      await test.step('Navigate to Signup Page', async () => {
+      await test.step('Navigate to Home Page', async () => {
         await homePage.navigate();
         expect(await homePage.getTitle()).toBe("Automation Exercise");
       });

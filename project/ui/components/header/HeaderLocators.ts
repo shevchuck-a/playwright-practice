@@ -10,6 +10,10 @@ export class HeaderLocators{
     return this.page.getByRole('link', { name: 'Login' });
   }
 
+  public get logoutLink() {
+    return this.page.getByRole('link', { name: 'Logout' });
+  }
+
   public get deleteAccountLink() {
     return this.page.getByRole('link', { name: 'Delete Account' });
   }

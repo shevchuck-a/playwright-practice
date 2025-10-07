@@ -4,6 +4,8 @@ import { randomUUID } from 'crypto';
 import { AccountInfo } from '@entities/AccountInfo';
 import { AccountTitle } from '@entities/accountTitle';
 
+test.use({ storageState: { cookies: [], origins: [] } });
+
 test.describe('Login tests', () => {
   const newUserData: AccountInfo[] = [
       {
