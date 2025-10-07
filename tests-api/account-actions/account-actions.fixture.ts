@@ -1,5 +1,5 @@
 import { test as base } from '@ui-fixtures/baseFixture';
-import { AccountAPI } from '@api/account'
+import { AccountAPI } from '@api/endpoints/account'
 
 type AccountActionsFixture = {
   accountAPI: AccountAPI;

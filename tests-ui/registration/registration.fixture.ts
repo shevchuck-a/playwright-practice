@@ -3,7 +3,7 @@ import { LoginPage } from '@pages/login/LoginPage';
 import { SignupPage } from '@pages/singnup/SignupPage';
 import { AccountCreatedPage } from '@pages/accountCreated/AccountCreatedPage';
 import { AccountDeletedPage } from '@pages/accountDeleted/AccountDeletedPage';
-import { AccountAPI } from '@api/account'
+import { AccountAPI } from '@api/endpoints/account'
 
 type RegistrationFixture = {
   loginPage: LoginPage;

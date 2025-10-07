@@ -1,5 +1,6 @@
 import { APIRequestContext } from "playwright-core";
 import { AccountInfo } from "@entities/accountInfo";
+import { ApiResponseBody } from "@api/types/ApiResponseBody";
 
 export class AccountAPI {
   private request: APIRequestContext;
@@ -18,7 +19,7 @@ export class AccountAPI {
       form: body
     });
 
-    if(response.status() === 200 && (await response.json()).responseCode === 201){
+    if(response.status() === 200 && (await response.json() as ApiResponseBody<{message: string}>).responseCode === 201){
       globalThis.registeredUsersForCleanup.push(accountInfo);
     }
     return response;

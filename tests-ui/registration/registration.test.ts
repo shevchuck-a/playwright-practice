@@ -3,6 +3,7 @@ import { test } from './registration.fixture';
 import { randomUUID } from 'crypto';
 import { AccountTitle } from "@entities/accountTitle";
 import { AccountInfo } from '@entities/accountInfo';
+import { ApiResponseBody } from '@api/types/ApiResponseBody';
 
 
 test.describe('Registration cases', () =>{
@@ -83,6 +84,27 @@ test.describe('Registration cases', () =>{
         
         await accountDeletedPage.clickContinue();
         expect(await homePage.getTitle()).toBe("Automation Exercise");
+      });
+    });
+
+    test('Try to register exist user',  async ({
+      loginPage,
+      accountAPI
+    }) =>{
+      await test.step('Precondition - register user via API', async () =>{
+        const registerUserApi = await accountAPI.create(userData);
+        const registerUserApiBody = await registerUserApi.json() as ApiResponseBody<{message: string}>;
+        expect(registerUserApiBody.responseCode).toBe(201);
+      });
+
+      await test.step('Navigate to Login/Signup Page', async () => {
+        await loginPage.navigate();
+        expect(await loginPage.getTitle()).toBe("Automation Exercise - Signup / Login");
+      });
+
+      await test.step('Fill Signup Form with exist user data', async () =>{
+        await loginPage.fillSignupFormAndSubmit(userData.name!, userData.email!);
+        await expect(loginPage.emailAlreadyExistError).toBeVisible();
       });
     });
   }

@@ -1,6 +1,6 @@
 import { test as base } from '@ui-fixtures/baseFixture';
 import { LoginPage } from '@pages/login/LoginPage';
-import { AccountAPI } from '@api/account'
+import { AccountAPI } from '@api/endpoints/account'
 
 
 type LoginFixture = {

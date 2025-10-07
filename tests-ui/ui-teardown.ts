@@ -1,5 +1,5 @@
 import { test as teardown } from '@playwright/test';
-import { AccountAPI } from "@api/account";
+import { AccountAPI } from "@api/endpoints/account";
 
 teardown('cleanup created accounts', async ({ page }) => {
   console.log('Running UI teardown to delete created accounts');

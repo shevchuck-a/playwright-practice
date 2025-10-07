@@ -37,4 +37,8 @@ export class LoginLocators extends BasePage {
   public get signupFormHeader() {
     return this.page.getByText('New User Signup!');
   }
+
+  public get emailAlreadyExistError() {
+    return this.page.getByText('Email Address already exist!');
+  }
 }

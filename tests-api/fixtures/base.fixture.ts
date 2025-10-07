@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import { AccountAPI } from '@api/account'
+import { AccountAPI } from '@api/endpoints/account'
 import '../../globalVars';
 
 type BaseFixture = {
