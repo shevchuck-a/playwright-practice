@@ -8,3 +8,4 @@ node_modules/
 
 # Authentication state files
 /playwright/.auth/
+playwright/.auth/user.json
