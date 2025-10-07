@@ -2,12 +2,12 @@ import { expect } from '@playwright/test';
 import { test } from './registration.fixture';
 import { randomUUID } from 'crypto';
 import { AccountTitle } from "@entities/accountTitle";
-import { AccountInfo } from '@entities/accountInfo';
+import { AccountInfo } from '@entities/AccountInfo';
 import { ApiResponseBody } from '@api/types/ApiResponseBody';
 
 
 test.describe('Registration cases', () =>{
-  const newUserData: AccountInfo[] = [
+  const registerUsersData: AccountInfo[] = [
     {
       title: AccountTitle.MR,
       name: `testuser-${randomUUID()}`,
@@ -29,9 +29,9 @@ test.describe('Registration cases', () =>{
       zipcode: 'M4B1B3',
       mobile_number: '+1234567890'
     }
-  ]
+  ];
 
-  for (const userData of newUserData) {
+  for (const userData of registerUsersData) {
     test('Register new User', async ({
       homePage,
       loginPage,
@@ -87,12 +87,26 @@ test.describe('Registration cases', () =>{
       });
     });
 
+
+    const existUserData: AccountInfo = {
+      name: `testuser-${randomUUID()}`,
+      email: `${randomUUID()}@example.com`,
+      password: 'Password123!',
+      firstname: 'John',
+      lastname: 'Doe',
+      address1: '123 Main St',
+      country: 'Canada',
+      state: 'Ontario',
+      city: 'Toronto',
+      zipcode: 'M4B1B3',
+      mobile_number: '+1234567890'
+    };
     test('Try to register exist user',  async ({
       loginPage,
       accountAPI
     }) =>{
       await test.step('Precondition - register user via API', async () =>{
-        const registerUserApi = await accountAPI.create(userData);
+        const registerUserApi = await accountAPI.create(existUserData);
         const registerUserApiBody = await registerUserApi.json() as ApiResponseBody<{message: string}>;
         expect(registerUserApiBody.responseCode).toBe(201);
       });
@@ -103,7 +117,7 @@ test.describe('Registration cases', () =>{
       });
 
       await test.step('Fill Signup Form with exist user data', async () =>{
-        await loginPage.fillSignupFormAndSubmit(userData.name!, userData.email!);
+        await loginPage.fillSignupFormAndSubmit(existUserData.name!, existUserData.email!);
         await expect(loginPage.emailAlreadyExistError).toBeVisible();
       });
     });
