@@ -24,6 +24,7 @@
       "@api/*": ["project/api/*"],
       "@helpers-ui/*": ["project/ui/helpers/*"],
       "@interfaces-ui/*": ["project/ui/interfaces/*"],
+      "@test-utils/*": ["test-utils/*"],
     },
     "types": ["node", "@playwright/test", "k6"]
   },
@@ -36,6 +37,7 @@
     "tests-performance/**/*",
     "project/**/*",
     "framework/**/*",
+    "test-utils/**/*",
     "playwright.config.ts"
   ],
   "exclude": [

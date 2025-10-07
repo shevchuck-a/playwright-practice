@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from './login.fixture';
 import { randomUUID } from 'crypto';
-import { AccountInfo } from '@entities/accountInfo';
+import { AccountInfo } from '@entities/AccountInfo';
 import { AccountTitle } from '@entities/accountTitle';
 
 test.describe('Login tests', () => {

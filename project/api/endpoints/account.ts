@@ -1,5 +1,5 @@
 import { APIRequestContext } from "playwright-core";
-import { AccountInfo } from "@entities/accountInfo";
+import { AccountInfo } from "@entities/AccountInfo";
 import { ApiResponseBody } from "@api/types/ApiResponseBody";
 
 export class AccountAPI {

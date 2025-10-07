@@ -1,6 +1,9 @@
 import { expect } from '@playwright/test';
 import { test } from './account-actions.fixture';
 import { randomUUID } from 'crypto';
+import { ApiResponseBody } from '@api/types/ApiResponseBody';
+import { User } from '@api/types/User';
+import { UserAssertions } from '@test-utils/assertions/UserAssertions';
 
 test.describe('API tests for account actions', () => {
   const newUserData = [
@@ -51,7 +54,7 @@ test.describe('API tests for account actions', () => {
       await test.step('Create user via API', async () => {
         const response = await accountAPI.create(userData.initialUser);
         expect(response.status()).toBe(200);
-        const responseBody = await response.json();
+        const responseBody = await response.json() as ApiResponseBody<{message: string}>;
         expect(responseBody.responseCode, responseBody).toBe(201);
         expect(responseBody.message, responseBody).toBe('User created!');
         
@@ -60,23 +63,9 @@ test.describe('API tests for account actions', () => {
       await test.step('Get user via API', async () => {
         const response = await accountAPI.get(userData.initialUser.email);
         expect(response.status()).toBe(200);
-        const responseBody = await response.json();
-        expect(responseBody.responseCode, responseBody).toBe(200);
-        expect(responseBody.user.name).toBe(userData.initialUser.name);
-        expect(responseBody.user.email).toBe(userData.initialUser.email);
-        expect(responseBody.user.title).toBe(userData.initialUser.title);
-        expect(responseBody.user.birth_day).toBe(userData.initialUser.birth_date);
-        expect(responseBody.user.birth_month).toBe(userData.initialUser.birth_month);
-        expect(responseBody.user.birth_year).toBe(userData.initialUser.birth_year);
-        expect(responseBody.user.first_name).toBe(userData.initialUser.firstname);
-        expect(responseBody.user.last_name).toBe(userData.initialUser.lastname);
-        expect(responseBody.user.company).toBe(userData.initialUser.company);
-        expect(responseBody.user.address1).toBe(userData.initialUser.address1);
-        expect(responseBody.user.address2).toBe(userData.initialUser.address2);
-        expect(responseBody.user.country).toBe(userData.initialUser.country);
-        expect(responseBody.user.state).toBe(userData.initialUser.state);
-        expect(responseBody.user.city).toBe(userData.initialUser.city);
-        expect(responseBody.user.zipcode).toBe(userData.initialUser.zipcode);
+        const responseBody = await response.json() as ApiResponseBody<{user: User}>;
+        expect(responseBody.responseCode).toBe(200);
+        UserAssertions.expectUserMatchesAccountInfo(responseBody.user, userData.initialUser);
       });
 
       await test.step('Update user via API', async () => {
@@ -91,23 +80,9 @@ test.describe('API tests for account actions', () => {
       await test.step('Get updated user via API', async () => {
         const response = await accountAPI.get(userData.updatedUser.email);
         expect(response.status()).toBe(200);
-        const responseBody = await response.json();
+        const responseBody = await response.json() as ApiResponseBody<{user: User}>;
         expect(responseBody.responseCode).toBe(200);
-        expect(responseBody.user.name).toBe(userData.updatedUser.name);
-        expect(responseBody.user.email).toBe(userData.updatedUser.email);
-        expect(responseBody.user.title).toBe(userData.updatedUser.title);
-        expect(responseBody.user.birth_day).toBe(userData.updatedUser.birth_date);
-        expect(responseBody.user.birth_month).toBe(userData.updatedUser.birth_month);
-        expect(responseBody.user.birth_year).toBe(userData.updatedUser.birth_year);
-        expect(responseBody.user.first_name).toBe(userData.updatedUser.firstname);
-        expect(responseBody.user.last_name).toBe(userData.updatedUser.lastname);
-        expect(responseBody.user.company).toBe(userData.updatedUser.company);
-        expect(responseBody.user.address1).toBe(userData.updatedUser.address1);
-        expect(responseBody.user.address2).toBe(userData.updatedUser.address2);
-        expect(responseBody.user.country).toBe(userData.updatedUser.country);
-        expect(responseBody.user.state).toBe(userData.updatedUser.state);
-        expect(responseBody.user.city).toBe(userData.updatedUser.city);
-        expect(responseBody.user.zipcode).toBe(userData.updatedUser.zipcode);
+        UserAssertions.expectUserMatchesAccountInfo(responseBody.user, userData.updatedUser);
       });
 
       await test.step('Delete user via API', async () => {

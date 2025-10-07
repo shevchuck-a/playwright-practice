@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { AccountInfo } from "@entities/accountInfo";
+import { AccountInfo } from "@entities/AccountInfo";
 import { SignupLocators } from "./SignupLocators";
 import { FormsHelper } from "@helpers-ui/FormsHelper";
 import { IFieldConfig } from "@interfaces-ui/IFieldConfig";
