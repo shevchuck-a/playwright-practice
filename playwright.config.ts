@@ -42,7 +42,7 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: './playwright/.auth/user.json',
+        storageState: './playwright/.auth/chromium-user.json',
       },
       dependencies: ['ui-setup'],
     },
@@ -51,7 +51,7 @@ const config: PlaywrightTestConfig = {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        storageState: './playwright/.auth/user.json',
+        storageState: './playwright/.auth/firefox-user.json',
       },
       dependencies: ['ui-setup'],
     },
